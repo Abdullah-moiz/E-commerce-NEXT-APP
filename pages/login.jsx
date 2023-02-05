@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import axios from 'axios'
-import { logged_in } from './api/auth/verification'
+
 
 
 export default function login() {
@@ -14,7 +14,7 @@ export default function login() {
         headers: headers
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e) => { 
         e.preventDefault()
         try{
             const res = await axios.post('/api/auth/logged_in', data , options)
