@@ -1,15 +1,43 @@
+import axios from 'axios';
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 import { FaSignInAlt, FaUserAlt } from 'react-icons/fa'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export default function register() {
+    const [formData, setFormData] = useState({ name: "", email: "", password: "", cPassword: "" });
+    const [Confirm_errors, setConfirm_Errors] = useState(false);
+    const [length_errors, setLength_Errors] = useState(false);
+
+    const { name, email, password, cPassword } = formData;
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (password.length < 8) {
+            setLength_Errors(true)
+        }
+        if (password !== cPassword) {
+            setConfirm_Errors(true);
+        }
+        const finalData = { name, email, password }
+        try {
+            const res  = await axios.post('/api/auth/register_user', finalData)
+            toast.success(res.data.message)
+        } catch (error) {
+            console.log(error.response.data.error)
+            toast.error(error.response.data.error)
+        }
+    }
+
     return (
         <>
             <div className="min-h-screen flex flex-col items-center justify-center bg-gray-300">
                 <div className="flex flex-col bg-white shadow-md px-4 sm:px-6 md:px-8 lg:px-10 py-8 rounded-md w-full max-w-md">
                     <div className="font-medium self-center text-xl sm:text-2xl uppercase text-gray-800">REGISTER YOUR ACCOUNT</div>
                     <div className="mt-10">
-                        <form action="#" >
+                        <form onSubmit={handleSubmit} encType="application/json" >
                             <div className="flex flex-col mb-6">
                                 <label htmlFor="name" className="mb-1 text-xs sm:text-sm tracking-wide text-gray-600">E-Mail Address:</label>
                                 <div className="relative">
@@ -17,7 +45,7 @@ export default function register() {
                                         <FaUserAlt />
                                     </div>
 
-                                    <input id="name" type="text" name="name" className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-lg border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400" placeholder="Name" />
+                                    <input onChange={(e) => setFormData({ ...formData, name: e.target.value })} required id="name" type="text" name="name" className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-lg border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400" placeholder="Name" />
                                 </div>
                             </div>
                             <div className="flex flex-col mb-6">
@@ -29,7 +57,7 @@ export default function register() {
                                         </svg>
                                     </div>
 
-                                    <input id="email" type="email" name="email" className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-lg border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400" placeholder="E-Mail Address" />
+                                    <input onChange={(e) => setFormData({ ...formData, email: e.target.value })} required id="email" type="email" name="email" className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-lg border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400" placeholder="E-Mail Address" />
                                 </div>
                             </div>
                             <div className="flex flex-col mb-6">
@@ -43,7 +71,10 @@ export default function register() {
                                         </span>
                                     </div>
 
-                                    <input id="password" type="password" name="password" className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-lg border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400" placeholder="Password" />
+                                    <input onChange={(e) => setFormData({ ...formData, password: e.target.value })} required id="password" type="password" name="password" className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-lg border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400" placeholder="Password" />
+                                    {
+                                        length_errors && <p className="text-red-500 text-xs italic">Please choose a password of at least 8 characters.</p>
+                                    }
                                 </div>
                             </div>
 
@@ -58,7 +89,10 @@ export default function register() {
                                         </span>
                                     </div>
 
-                                    <input id="c-password" type="password" name="c-password" className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-lg border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400" placeholder="Confirm Password" />
+                                    <input onChange={(e) => setFormData({ ...formData, cPassword: e.target.value })} id="c-password" type="password" name="c-password" className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-lg border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400" placeholder="Confirm Password" />
+                                    {
+                                        Confirm_errors && <p className="text-red-500 text-xs italic">Passwords do not match.</p>
+                                    }
                                 </div>
                             </div>
 
@@ -75,7 +109,7 @@ export default function register() {
                         </form>
                     </div>
                     <div className="flex justify-center items-center mt-6">
-                        <Link href="/login"  className="inline-flex items-center font-bold text-blue-500 hover:text-blue-700 text-xs text-center">
+                        <Link href="/login" className="inline-flex items-center font-bold text-blue-500 hover:text-blue-700 text-xs text-center">
                             <span>
                                 <FaSignInAlt className='text-xl' />
                             </span>
@@ -83,6 +117,7 @@ export default function register() {
                         </Link>
                     </div>
                 </div>
+                <ToastContainer />
             </div>
         </>
     )
