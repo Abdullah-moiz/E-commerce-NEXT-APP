@@ -23,7 +23,7 @@ export default function register() {
         }
         const finalData = { name, email, password }
         try {
-            const res  = await axios.post('/api/auth/register_user', finalData)
+            const res = await axios.post('/api/auth/register_user', finalData)
             toast.success(res.data.message)
         } catch (error) {
             console.log(error.response.data.error)

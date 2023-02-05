@@ -1,27 +1,34 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import axios from 'axios'
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Cookies from 'js-cookie';
+import Router from 'next/router';
 
 
 export default function login() {
-    const [formData , setFormData]  =  useState({  email : '' , password : ''})
+    const [formData, setFormData] = useState({ email: '', password: '' })
 
-    const headers =  {
-        'Content-Type': 'application/json',
-    }
-    const options = {
-        headers: headers
-    };
-
-    const handleSubmit = async (e) => { 
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        try{
-            const res = await axios.post('/api/auth/logged_in', data , options)
-            return console.log(res.data)
+        try {
+            await axios.post('/api/auth/login_user', formData)
+                .then((response) => {
+                    Cookies.set('token', response.data.token, { expires: 30 });
+                    const userData = response.data.user;
+                    const { email, name } = userData;
+                    const dataX = { email, name }
+                    localStorage.setItem('user', JSON.stringify(dataX))
+                    Router.push('/frontend/home')
+                })
+                .catch((error) => {
+                    console.error(error);
+                    return toast.error(error.response.data.error);
+                });
         }
-        catch(err){
-            console.log(err);
+        catch (err) {
+            console.log("error in login frontend catch block =>  " + err);
         }
     }
 
@@ -32,7 +39,7 @@ export default function login() {
                 <div className="flex flex-col bg-white shadow-md px-4 sm:px-6 md:px-8 lg:px-10 py-8 rounded-md w-full max-w-md">
                     <div className="font-medium self-center text-xl sm:text-2xl uppercase text-gray-800">Login To Your Account</div>
                     <div className="mt-10">
-                        <form  onSubmit={handleSubmit}  >
+                        <form onSubmit={handleSubmit} encType="application/json" >
                             <div className="flex flex-col mb-6">
                                 <label htmlFor="email" className="mb-1 text-xs sm:text-sm tracking-wide text-gray-600">E-Mail Address:</label>
                                 <div className="relative">
@@ -42,7 +49,7 @@ export default function login() {
                                         </svg>
                                     </div>
 
-                                    <input id="email" onChange={(e) => setFormData({...formData , email : e.target.value})} type="email" name="email" className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-lg border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400" placeholder="E-Mail Address" />
+                                    <input required id="email" onChange={(e) => setFormData({ ...formData, email: e.target.value })} type="email" name="email" className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-lg border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400" placeholder="E-Mail Address" />
                                 </div>
                             </div>
                             <div className="flex flex-col mb-6">
@@ -56,13 +63,7 @@ export default function login() {
                                         </span>
                                     </div>
 
-                                    <input id="password"  onChange={(e) => setFormData({...formData , password : e.target.value})} type="password" name="password" className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-lg border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400" placeholder="Password" />
-                                </div>
-                            </div>
-
-                            <div className="flex items-center mb-6 -mt-4">
-                                <div className="flex ml-auto">
-                                    <a href="#" className="inline-flex text-xs sm:text-sm text-blue-500 hover:text-blue-700">Forgot Your Password?</a>
+                                    <input required id="password" onChange={(e) => setFormData({ ...formData, password: e.target.value })} type="password" name="password" className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-lg border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400" placeholder="Password" />
                                 </div>
                             </div>
 
@@ -79,7 +80,7 @@ export default function login() {
                         </form>
                     </div>
                     <div className="flex justify-center items-center mt-6">
-                        <Link href="/register"  className="inline-flex items-center font-bold text-blue-500 hover:text-blue-700 text-xs text-center">
+                        <Link href="/register" className="inline-flex items-center font-bold text-blue-500 hover:text-blue-700 text-xs text-center">
                             <span>
                                 <svg className="h-6 w-6" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                                     <path d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
@@ -89,6 +90,7 @@ export default function login() {
                         </Link>
                     </div>
                 </div>
+                <ToastContainer />
             </div>
         </>
     )
