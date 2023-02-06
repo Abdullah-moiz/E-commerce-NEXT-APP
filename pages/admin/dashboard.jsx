@@ -6,10 +6,11 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function dashboard() {
-  const [email, setEmail] = useState(undefined);
+  
+  // storing token in variable token 
   const token = Cookies.get('token');
 
-
+  // if token is not present then redirect to login page else store the user data in a variable
   useEffect(() => {
     if (!token) {
       Router.push('/login')
@@ -27,6 +28,7 @@ export default function dashboard() {
 
   }, [])
 
+  // logout function
   const logout = () => {
     Cookies.remove('token')
     localStorage.removeItem('user')

@@ -8,8 +8,10 @@ import Router from 'next/router';
 
 
 export default function login() {
+    // storing form data in state   
     const [formData, setFormData] = useState({ email: '', password: '' })
 
+    // handling form data and sending it to backend
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {

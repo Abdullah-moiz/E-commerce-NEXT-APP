@@ -8,10 +8,11 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 export default function home() {
-  const [email, setEmail] = useState(undefined);
 
+  // create a token variable and store the token in it
   const token = Cookies.get('token');
 
+  // if the token is not present then redirect to login page else store the user data in a variable
   useEffect(() => {
     if (!token) {
       Router.push('/login')
@@ -27,6 +28,9 @@ export default function home() {
 
 
   }, [])
+
+
+  // logout function
 
   const logout = () => {
     Cookies.remove('token')

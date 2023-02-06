@@ -7,12 +7,17 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 export default function register() {
+    // storing form data in state
     const [formData, setFormData] = useState({ name: "", email: "", password: "", cPassword: "" });
+
+    // storing errors in state
     const [Confirm_errors, setConfirm_Errors] = useState(false);
     const [length_errors, setLength_Errors] = useState(false);
 
+    // destructuring form data
     const { name, email, password, cPassword } = formData;
 
+    // handling form data sending it to backend
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (password.length < 8) {
