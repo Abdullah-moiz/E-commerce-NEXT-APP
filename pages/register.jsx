@@ -45,7 +45,7 @@ export default function register() {
                                         <FaUserAlt />
                                     </div>
 
-                                    <input onChange={(e) => setFormData({ ...formData, name: e.target.value })} required id="name" type="text" name="name" className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-lg border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400" placeholder="Name" />
+                                    <input onChange={(e) => setFormData({ ...formData, name: e.target.value })} required id="name" type="text" name="name" className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-lg border border-gray-400 w-full py-2 focus:outline-none focus:border-orange-400" placeholder="Name" />
                                 </div>
                             </div>
                             <div className="flex flex-col mb-6">
@@ -57,7 +57,7 @@ export default function register() {
                                         </svg>
                                     </div>
 
-                                    <input onChange={(e) => setFormData({ ...formData, email: e.target.value })} required id="email" type="email" name="email" className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-lg border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400" placeholder="E-Mail Address" />
+                                    <input onChange={(e) => setFormData({ ...formData, email: e.target.value })} required id="email" type="email" name="email" className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-lg border border-gray-400 w-full py-2 focus:outline-none focus:border-orange-400" placeholder="E-Mail Address" />
                                 </div>
                             </div>
                             <div className="flex flex-col mb-6">
@@ -71,7 +71,7 @@ export default function register() {
                                         </span>
                                     </div>
 
-                                    <input onChange={(e) => setFormData({ ...formData, password: e.target.value })} required id="password" type="password" name="password" className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-lg border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400" placeholder="Password" />
+                                    <input onChange={(e) => setFormData({ ...formData, password: e.target.value })} required id="password" type="password" name="password" className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-lg border border-gray-400 w-full py-2 focus:outline-none focus:border-orange-400" placeholder="Password" />
                                     {
                                         length_errors && <p className="text-red-500 text-xs italic">Please choose a password of at least 8 characters.</p>
                                     }
@@ -89,7 +89,7 @@ export default function register() {
                                         </span>
                                     </div>
 
-                                    <input onChange={(e) => setFormData({ ...formData, cPassword: e.target.value })} id="c-password" type="password" name="c-password" className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-lg border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400" placeholder="Confirm Password" />
+                                    <input onChange={(e) => setFormData({ ...formData, cPassword: e.target.value })} id="c-password" type="password" name="c-password" className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-lg border border-gray-400 w-full py-2 focus:outline-none focus:border-orange-400" placeholder="Confirm Password" />
                                     {
                                         Confirm_errors && <p className="text-red-500 text-xs italic">Passwords do not match.</p>
                                     }
@@ -97,7 +97,7 @@ export default function register() {
                             </div>
 
                             <div className="flex w-full">
-                                <button type="submit" className="flex items-center justify-center focus:outline-none text-white text-sm sm:text-base bg-blue-600 hover:bg-blue-700 rounded py-2 w-full transition duration-150 ease-in">
+                                <button type="submit" className="flex items-center justify-center focus:outline-none text-white text-sm sm:text-base bg-orange-600 hover:bg-orange-700 rounded py-2 w-full transition duration-150 ease-in">
                                     <span className="mr-2 uppercase">Register</span>
                                     <span>
                                         <svg className="h-6 w-6" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -109,7 +109,7 @@ export default function register() {
                         </form>
                     </div>
                     <div className="flex justify-center items-center mt-6">
-                        <Link href="/login" className="inline-flex items-center font-bold text-blue-500 hover:text-blue-700 text-xs text-center">
+                        <Link href="/login" className="inline-flex items-center font-bold text-orange-500 hover:text-orange-700 text-xs text-center">
                             <span>
                                 <FaSignInAlt className='text-xl' />
                             </span>

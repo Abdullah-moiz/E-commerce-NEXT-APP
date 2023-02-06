@@ -56,7 +56,7 @@ export default function login() {
                                         </svg>
                                     </div>
 
-                                    <input required id="email" onChange={(e) => setFormData({ ...formData, email: e.target.value })} type="email" name="email" className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-lg border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400" placeholder="E-Mail Address" />
+                                    <input required id="email" onChange={(e) => setFormData({ ...formData, email: e.target.value })} type="email" name="email" className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-lg border border-gray-400 w-full py-2 focus:outline-none focus:border-orange-400" placeholder="E-Mail Address" />
                                 </div>
                             </div>
                             <div className="flex flex-col mb-6">
@@ -70,12 +70,12 @@ export default function login() {
                                         </span>
                                     </div>
 
-                                    <input required id="password" onChange={(e) => setFormData({ ...formData, password: e.target.value })} type="password" name="password" className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-lg border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400" placeholder="Password" />
+                                    <input required id="password" onChange={(e) => setFormData({ ...formData, password: e.target.value })} type="password" name="password" className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-lg border border-gray-400 w-full py-2 focus:outline-none focus:border-orange-400" placeholder="Password" />
                                 </div>
                             </div>
 
                             <div className="flex w-full">
-                                <button type="submit" className="flex items-center justify-center focus:outline-none text-white text-sm sm:text-base bg-blue-600 hover:bg-blue-700 rounded py-2 w-full transition duration-150 ease-in">
+                                <button type="submit" className="flex items-center justify-center focus:outline-none text-white text-sm sm:text-base bg-orange-600 hover:bg-orange-700 rounded py-2 w-full transition duration-150 ease-in">
                                     <span className="mr-2 uppercase">Login</span>
                                     <span>
                                         <svg className="h-6 w-6" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -87,7 +87,7 @@ export default function login() {
                         </form>
                     </div>
                     <div className="flex justify-center items-center mt-6">
-                        <Link href="/register" className="inline-flex items-center font-bold text-blue-500 hover:text-blue-700 text-xs text-center">
+                        <Link href="/register" className="inline-flex items-center font-bold text-orange-500 hover:text-orange-700 text-xs text-center">
                             <span>
                                 <svg className="h-6 w-6" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                                     <path d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
