@@ -20,7 +20,14 @@ export default function login() {
                     const { email, name } = userData;
                     const dataX = { email, name }
                     localStorage.setItem('user', JSON.stringify(dataX))
-                    Router.push('/frontend/home')
+                    if(userData.isAdmin === true)
+                    {
+                        Router.push('/admin/dashboard')
+                    }
+                    else
+                    {
+                        Router.push('/frontend/home')
+                    }
                 })
                 .catch((error) => {
                     console.error(error);
