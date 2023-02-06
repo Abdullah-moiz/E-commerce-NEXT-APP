@@ -1,7 +1,9 @@
 import React from 'react'
-import { useEffect , useState } from 'react';
+import { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 import Router from 'next/router';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function dashboard() {
   const [email, setEmail] = useState(undefined);
@@ -15,8 +17,10 @@ export default function dashboard() {
     else {
       const user = localStorage.getItem('user');
       const data = JSON.parse(user);
-
-      console.log(data)
+      if (data.isAdmin === false) {
+        toast.error('You are not allowed to access this page');
+        Router.push('/frontend/home');
+      }
 
     }
 
@@ -30,6 +34,9 @@ export default function dashboard() {
     window.location.reload();
   }
   return (
-    <button onClick={logout}>logout </button>
+    <>
+      <button onClick={logout}>logout </button>
+      <ToastContainer />
+    </>
   )
 }
