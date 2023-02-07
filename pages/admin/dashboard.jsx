@@ -4,9 +4,11 @@ import Cookies from 'js-cookie';
 import Router from 'next/router';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Sidebar_com from './components/Sidebar_com';
+import Profile from './components/Profile';
 
 export default function dashboard() {
-  
+
   // storing token in variable token 
   const token = Cookies.get('token');
 
@@ -22,23 +24,20 @@ export default function dashboard() {
         toast.error('You are not allowed to access this page');
         Router.push('/frontend/home');
       }
-
     }
-
+    
 
   }, [])
 
-  // logout function
-  const logout = () => {
-    Cookies.remove('token')
-    localStorage.removeItem('user')
-    localStorage.clear;
-    window.location.reload();
-  }
+  useEffect(() => {
+    toast.success("Welcome to your Dashboard")
+  },[])
+
   return (
-    <>
-      <button onClick={logout}>logout </button>
+    <div className='w-full h-screen bg-slate-900 flex'>
+      <Sidebar_com />
+      <Profile />
       <ToastContainer />
-    </>
+    </div>
   )
 }
