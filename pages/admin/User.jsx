@@ -4,7 +4,7 @@ import Sidebar_com from './components/Sidebar_com'
 
 
 export async function getStaticProps() {
-    const data = getUserData() || [];
+    const data = await getUserData() || [];
 
     return {
         props: { data }
@@ -13,8 +13,6 @@ export async function getStaticProps() {
 }
 
 export default function User({ data }) {
-
-
     return (
         <div className='w-full h-screen bg-slate-900 flex'>
             <Sidebar_com />
@@ -42,18 +40,22 @@ export default function User({ data }) {
                                     </thead>
                                     <tbody>
                                         {
-                                            data && (
-                                                <tr className="border-b ">
-                                                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">1</td>
-                                                    <td className="text-sm text-white font-light px-6 py-4 whitespace-nowrap">
-                                                        Mark
-                                                    </td>
-                                                    <td className="text-sm text-white font-light px-6 py-4 whitespace-nowrap">
-                                                        Otto
-                                                    </td>
+                                            data?.map((user) => {
+                                                return (
+                                                    <tr className="border-b " key={user.id}>
+                                                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">{user._id}</td>
+                                                        <td className="text-sm text-white font-light px-6 py-4 whitespace-nowrap">
+                                                            {user.name}
+                                                        </td>
+                                                        <td className="text-sm text-white font-light px-6 py-4 whitespace-nowrap">
+                                                            {user.email}
+                                                        </td>
 
-                                                </tr>
-                                            )
+                                                    </tr>
+                                                )
+                                            })
+
+
                                         }
 
                                     </tbody>
