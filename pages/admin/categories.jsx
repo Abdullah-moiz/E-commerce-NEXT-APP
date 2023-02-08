@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import Sidebar_com from './components/Sidebar_com'
-import { getCategoriesData } from '@/services/admin'
+import { deleteCategory, getCategoriesData } from '@/services/admin'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -34,20 +34,12 @@ export default function categories({ data }) {
     }, []);
 
     const handleDelete = async (id) => {
-        try {
-            const res = await fetch(`http://localhost:3000/api/admin/deleteCategory?id=${id}`, {
-                method: 'DELETE',
-            })
-            const data = await res.json()
-            if (data.msg) {
-                toast.success(data.msg);
-            }
-            else {
-                toast.error(data.error)
-            }
+        const data = await deleteCategory(id);
+        if (data.msg) {
+            toast.success(data.msg);
         }
-        catch (error) {
-            console.log('error in deleting category Data => ' + error);
+        else {
+            toast.error(data.error)
         }
     }
 

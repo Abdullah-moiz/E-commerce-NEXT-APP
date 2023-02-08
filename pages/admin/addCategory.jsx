@@ -18,6 +18,7 @@ export default function addCategory() {
         const res = await add_Category(formData)
         if (res.msg) {
             toast.success(res.msg);
+            window.location.reload();
         }
         else {
             toast.error(res.error);
