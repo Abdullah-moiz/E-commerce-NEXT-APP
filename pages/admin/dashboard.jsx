@@ -29,10 +29,6 @@ export default function dashboard() {
 
   }, [])
 
-  useEffect(() => {
-    toast.success("Welcome to your Dashboard")
-  },[])
-
   return (
     <div className='w-full h-screen bg-slate-900 flex'>
       <Sidebar_com />

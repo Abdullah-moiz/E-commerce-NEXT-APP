@@ -42,7 +42,7 @@ export default function User({ data }) {
                                         {
                                             data?.map((user) => {
                                                 return (
-                                                    <tr className="border-b " key={user.id}>
+                                                    <tr className="border-b " key={user._id}>
                                                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">{user._id}</td>
                                                         <td className="text-sm text-white font-light px-6 py-4 whitespace-nowrap">
                                                             {user.name}
