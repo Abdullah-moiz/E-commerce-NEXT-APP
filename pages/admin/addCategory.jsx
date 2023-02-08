@@ -1,8 +1,6 @@
 import React from 'react'
 import Sidebar_com from './components/Sidebar_com'
-import { useEffect, useState } from 'react'
-import Cookies from 'js-cookie'
-import Router from 'next/router'
+import {  useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import FileBase from 'react-file-base64'
@@ -11,31 +9,13 @@ import { add_Category } from '@/services/admin'
 export default function addCategory() {
     const [formData, setFormData] = useState({ name: '', slug: '', description: '', featured: false, image: '' })
 
-    const token = Cookies.get('token');
-
-    // if token is not present then redirect to login page else store the user data in a variable
-    useEffect(() => {
-        if (!token) {
-            Router.push('/login')
-        }
-        else {
-            const user = localStorage.getItem('user');
-            const data = JSON.parse(user);
-            if (data.isAdmin === false) {
-                toast.error('You are not allowed to access this page');
-                Router.push('/frontend/home');
-            }
-        }
-
-
-    }, [])
+    
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         const res = await add_Category(formData)
-        console.log(res)
         if (res.msg) {
             toast.success(res.msg);
         }
@@ -90,4 +70,3 @@ export default function addCategory() {
         </div>
     )
 }
-{/* <FileBase onDone={({ base64 }) => setFormData({ ...formData, image: base64 })}  class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="category_image" type="file" /> */ }

@@ -33,3 +33,18 @@ export const add_Category = async (category) => {
         console.log('Facing error at addCategory client => ' + err);
     }
 }
+
+
+
+export const getCategoriesData = async () => {
+    try{
+        const res = await fetch('http://localhost:3000/api/admin/GetCategories', {
+            method: 'GET',
+        })
+        const data = await res.json();
+        return data.categories;
+    }catch(error)
+    {
+        console.log('error in getting Categories data (services) => ' + error);
+    }
+}

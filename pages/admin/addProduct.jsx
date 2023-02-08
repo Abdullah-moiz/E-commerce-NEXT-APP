@@ -5,24 +5,7 @@ import Cookies from 'js-cookie'
 import Router from 'next/router'
 
 export default function addProduct() {
-    const token = Cookies.get('token');
-
-    // if token is not present then redirect to login page else store the user data in a variable
-    useEffect(() => {
-      if (!token) {
-        Router.push('/login')
-      }
-      else {
-        const user = localStorage.getItem('user');
-        const data = JSON.parse(user);
-        if (data.isAdmin === false) {
-          toast.error('You are not allowed to access this page');
-          Router.push('/frontend/home');
-        }
-      }
-      
-  
-    }, [])
+    
     return (
         <div className='w-full h-screen bg-slate-900 flex'>
             <Sidebar_com />
