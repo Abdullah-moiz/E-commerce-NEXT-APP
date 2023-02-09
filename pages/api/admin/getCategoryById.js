@@ -8,8 +8,6 @@ export default async (req , res) =>
 
     const {id} = req.query;
 
-    console.log(id);
-
     try
     {
         const data = await Category.findById({_id : id});

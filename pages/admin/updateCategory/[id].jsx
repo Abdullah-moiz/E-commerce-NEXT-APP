@@ -41,30 +41,20 @@ export default function updateCategory({ CategoryData }) {
         setImageData(base64);
     };
 
-    const [formData, setFormData] = useState({ name: '', slug: '', description: '', featured: false, image: '' })
 
 
 
 
     const handleInputChange = (e) => {
         if (e.target.type === "checkbox") {
-            setFormData({ ...formData, [e.target.name]: e.target.checked });
             setCateData({ ...cateData, [e.target.name]: e.target.checked });
         } else {
-            setFormData({ ...formData, [e.target.name]: e.target.value });
             setCateData({ ...cateData, [e.target.name]: e.target.value });
         }
     };
 
-
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        setCateData({ ...cateData, image: imageData });
-
-        console.log(cateData)
-
+   const updateNow = async () => 
+   {
         const res = await update_Category(cateData)
         if (res.msg) {
             toast.success(res.msg);
@@ -73,6 +63,12 @@ export default function updateCategory({ CategoryData }) {
         else {
             toast.error(res.error);
         }
+   }
+
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setCateData({...cateData , image : imageData}, updateNow())
     }
 
 
@@ -114,9 +110,10 @@ export default function updateCategory({ CategoryData }) {
                     }
 
                     <div class="mb-6">
-                        <label for="password" class="block mb-2 text-sm font-medium text-white dark:text-white">Category Image</label>
 
+                        <label for="password" class="block mb-2 text-sm font-medium text-white dark:text-white">Category Image</label>
                         <FileBase onDone={({ base64 }) => handleImageChange(base64)} type="text" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500" required placeholder='Slug' />
+
                     </div>
 
                     <button type="submit" class="text-white bg-orange-600 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-orange-600 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-orange-600 dark:hover:bg-orange-600 dark:focus:ring-orange-600">Submit</button>

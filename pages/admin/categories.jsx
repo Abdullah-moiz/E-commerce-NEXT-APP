@@ -65,6 +65,9 @@ export default function categories({ data }) {
                                                 Name
                                             </th>
                                             <th scope="col" className="text-sm font-medium text-white px-6 py-4 ">
+                                                Name
+                                            </th>
+                                            <th scope="col" className="text-sm font-medium text-white px-6 py-4 ">
                                                 Image
                                             </th>
                                             <th scope="col" className="text-sm font-medium text-white px-6 py-4 ">
@@ -80,6 +83,9 @@ export default function categories({ data }) {
                                                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">{category._id}</td>
                                                         <td className="text-sm text-white font-light px-6 py-4 whitespace-nowrap">
                                                             {category.name}
+                                                        </td>
+                                                        <td className="text-sm text-white font-light px-6 py-4 whitespace-nowrap">
+                                                            {category.featured === true ? "YES" : "NO"}
                                                         </td>
                                                         <td className="text-sm text-white flex items-center justify-center font-light px-6 py-4 whitespace-nowrap">
                                                             <Image width={100} height={100} src={category.image} alt="Category Image" />

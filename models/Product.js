@@ -7,7 +7,7 @@ const ProductsSchema = mongoose.Schema({
     description: { type : String , required : true },
     image : { type : String , required : true },
     quantity : { type : Number , required : true },
-    isFeatured : { type : Boolean , required : true },
+    featured : { type : Boolean , required : true },
     slug : { type : String , required : true}
 },{ timestamps: true });
 

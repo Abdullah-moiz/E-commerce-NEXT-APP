@@ -3,6 +3,7 @@
 const baseURl = `http://localhost:3000`;
 
 export const getUserData = async () => {
+
     try {
         const res = await fetch(`${baseURl}/api/admin/user`, {
             method: 'GET',
@@ -81,6 +82,7 @@ export const getCategoryById = async (id) => {
 
 
 export const update_Category = async (category) => {
+    console.log(' i got call')
     try{
         const res = await fetch(`${baseURl}/api/admin/updateCategory` , {
             method : 'PUT',
@@ -95,5 +97,29 @@ export const update_Category = async (category) => {
     catch(error)
     {
         console.log('error in updating category (services) => ' + error)
+    }
+}
+
+// ---------------------------------------------- Products---------------------------------------------------------------------------------
+
+
+export const add_products = async ( product ) => 
+{
+    try
+    {
+        const res =  await fetch(`${baseURl}/api/admin/product` , {
+            method : 'POST',
+            headers : 
+            {
+                'Content-Type' : 'application/json',
+            },
+            body : JSON.stringify(product)
+        })
+        const data =  await res.json();
+        return data;
+    }
+    catch(error)
+    {
+        console.log('error in saving product (services) => ' +  error )
     }
 }
