@@ -72,10 +72,10 @@ export default function categories({ data }) {
                                             </th>
                                             <th scope="col" className="text-sm font-medium text-white px-6 py-4 ">
                                                 Action
-                                            </th>
+                                            </th> 
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                     <tbody>
                                         {
                                             finalData?.map((category) => {
                                                 return (
