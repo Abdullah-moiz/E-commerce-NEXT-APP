@@ -19,7 +19,7 @@ export const getUserData = async () => {
 
 export const add_Category = async (category) => {
     try {
-        const res = await fetch(`${baseURl}/api/admin/addCategory`, {
+        const res = await fetch(`${baseURl}/api/admin/category`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -40,7 +40,7 @@ export const add_Category = async (category) => {
 
 export const getCategoriesData = async () => {
     try {
-        const res = await fetch(`${baseURl}/api/admin/GetCategories`, {
+        const res = await fetch(`${baseURl}/api/admin/category`, {
             method: 'GET',
         })
         const data = await res.json();
@@ -53,7 +53,7 @@ export const getCategoriesData = async () => {
 
 export const deleteCategory = async (id) => {
     try {
-        const res = await fetch(`${baseURl}/api/admin/deleteCategory?id=${id}`, {
+        const res = await fetch(`${baseURl}/api/admin/category?id=${id}`, {
             method: 'DELETE',
         })
         const data = await res.json()
@@ -84,7 +84,7 @@ export const getCategoryById = async (id) => {
 export const update_Category = async (category) => {
     console.log(' i got call')
     try{
-        const res = await fetch(`${baseURl}/api/admin/updateCategory` , {
+        const res = await fetch(`${baseURl}/api/admin/category` , {
             method : 'PUT',
             headers : {
                 'Content-Type' : 'application/json'

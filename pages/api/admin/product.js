@@ -2,6 +2,7 @@ import connectDB from "@/utils/connectDB";
 import Product from "@/models/Product";
 
 export default async (req, res) => {
+    await connectDB();
     switch (req.method) {
         case "POST":
             addProduct(req , res)

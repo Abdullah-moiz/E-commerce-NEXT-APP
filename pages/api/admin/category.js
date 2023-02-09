@@ -1,0 +1,82 @@
+import connectDB from "@/utils/connectDB";
+import Category from "@/models/Category";
+
+export default async (req, res) => {
+    await connectDB();
+    switch (req.method) {
+        case "POST":
+            addCategory(req , res)
+            break;
+        case "GET":
+            getCategory(req , res)
+            break;
+        case "PUT":
+            updateCategory(req , res)
+            break;
+        case "DELETE":
+            deleteCategory(req , res)
+            break;
+        default:
+            return res.status(405).end(`Method ${req.method} Not Allowed`)
+    }
+}
+
+
+const addCategory = async (req, res) => {
+    const data = req.body;
+
+    const {name , slug , featured , image , description} = data;
+
+    if(!name || !slug || !featured || !image || !description) {
+        return res.status(422).json({error : "Please fill all the fields"});
+    }
+    
+    try {
+        await Category.create(data);
+        return res.status(201).json({msg : 'Category added successfully'});
+    }
+    catch (error) {
+        console.log('error adding category', error.message);
+        return res.status(500).json({error : "something went wrong"});
+    }
+}
+
+const deleteCategory = async (req, res) => {
+    const { id } = req.query;
+    try {
+        await Category.findByIdAndDelete(id);
+        return res.status(200).json({ msg: "category deleted successfully" });
+    }
+    catch (error) {
+        console.log('error in deleting Category data (backend) => ' + error);
+        return res.status(405).json({ error: "cannot delete category" });
+    }
+}
+
+const updateCategory = async (req, res) => {
+    const data = req.body;
+    const id = data._id;
+    try
+    {
+        await Category.findByIdAndUpdate(id , data)
+        return res.status(200).json({msg : 'category updated successfully'})
+        
+    }
+    catch(error)
+    {
+        console.log('error in getting category data by id (server) => ' + error)
+        return res.status(408).json({error : 'cannot update category data'})
+    }
+}
+const getCategory = async (req, res) => {
+    try
+    {
+        const categories = await Category.find({});
+        return res.status(200).json({categories});
+    }
+    catch(error)
+    {
+        console.log('error in getting Categories data (backend) => ' + error);
+        return res.status(405).json({error : "cannot get categories"});
+    }
+}
