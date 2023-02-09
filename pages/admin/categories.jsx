@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Sidebar_com from './components/Sidebar_com'
 import { deleteCategory, getCategoriesData } from '@/services/admin'
 import { ToastContainer, toast } from 'react-toastify';
+import Link from 'next/link';
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -84,7 +85,7 @@ export default function categories({ data }) {
                                                             <Image width={100} height={100} src={category.image} alt="Category Image" />
                                                         </td>
                                                         <td>
-                                                            <button class="bg-orange-500 mx-2 hover:bg-orange-900 text-white font-bold py-2 px-4 rounded-full">Update</button>
+                                                            <Link href={`updateCategory/${category._id}`}  class="bg-orange-500 mx-2 hover:bg-orange-900 text-white font-bold py-2 px-4 rounded-full">Update</Link>
                                                             <button onClick={() => handleDelete(category._id)} class="bg-red-500 mx-2 hover:bg-red-900 text-white font-bold py-2 px-4 rounded-full">Delete</button>
                                                         </td>
                                                     </tr>
