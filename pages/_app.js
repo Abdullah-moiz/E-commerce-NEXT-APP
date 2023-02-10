@@ -1,16 +1,12 @@
 import '@/styles/globals.css'
-
-import Router from 'next/router'
+import NextNProgress from 'nextjs-progressbar';
 
 export default function App({ Component, pageProps }) {
 
-  Router.events.on('routeChangeStart', (url) => {
-      console.log('routeChangeStart')
-  })
-
-  Router.events.on('routeChangeComplete', (url) => {
-    console.log('routeChangeComplete')
-  })
-
-  return <Component {...pageProps} />
+  return (
+    <>
+      <NextNProgress color="orange" height={7} showOnShallow={true} />
+      <Component {...pageProps} />
+    </>
+  )
 }
