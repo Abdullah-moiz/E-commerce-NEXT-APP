@@ -24,6 +24,7 @@
     "react-dom": "18.2.0",
     "react-file-base64": "^1.0.3",
     "react-icons": "^4.7.1",
+    "react-loader-spinner": "^5.3.4",
     "react-pro-sidebar": "^1.0.0",
     "react-toastify": "^9.1.1"
   },

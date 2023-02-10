@@ -45,7 +45,7 @@ export default function categories({ data }) {
     }
 
     return (
-        <div className='w-full h-screen bg-slate-900 flex  '>
+        <div className='w-full h-screen bg-slate-900 flex  ' >
             <Sidebar_com />
             <div className='w-10/12 h-full text-white overflow-auto '>
                 <div className='w-full p-4  mt-10 mb-4 flex items-center justify-center'>
