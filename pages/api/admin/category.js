@@ -21,6 +21,7 @@ export default async (req, res) => {
     }
 }
 
+// Adding Category
 
 const addCategory = async (req, res) => {
     const data = req.body;
@@ -41,6 +42,8 @@ const addCategory = async (req, res) => {
     }
 }
 
+
+// deleting  Category
 const deleteCategory = async (req, res) => {
     const { id } = req.query;
     try {
@@ -52,6 +55,8 @@ const deleteCategory = async (req, res) => {
         return res.status(405).json({ error: "cannot delete category" });
     }
 }
+
+// updating Category
 
 const updateCategory = async (req, res) => {
     const data = req.body;
@@ -68,6 +73,9 @@ const updateCategory = async (req, res) => {
         return res.status(408).json({error : 'cannot update category data'})
     }
 }
+
+
+// getting Category
 const getCategory = async (req, res) => {
     try
     {

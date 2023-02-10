@@ -21,6 +21,7 @@ export default async (req, res) => {
     }
 }
 
+// adding product
 
 const addProduct = async (req, res) => {
     const data = req.body;
@@ -36,6 +37,7 @@ const addProduct = async (req, res) => {
     }
 }
 
+// deleting product
 const deleteProduct = async (req, res) => {
     try {
 
@@ -45,6 +47,7 @@ const deleteProduct = async (req, res) => {
     }
 }
 
+// update Product
 const updateProduct = async (req, res) => {
     try {
 
@@ -53,11 +56,17 @@ const updateProduct = async (req, res) => {
 
     }
 }
-const getProduct = async (req, res) => {
-    try {
 
+
+// get Product
+const getProduct = async (req, res) => {
+
+    try {
+        const data = await  Product.find();
+        return res.status(201).send(data);
     }
     catch (error) {
-
+        console.log('error in getting product (server) => ' + error);
+        return res.status(405).json({error : "can't get data , Retry !"});
     }
 }

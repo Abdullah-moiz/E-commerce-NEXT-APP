@@ -2,6 +2,8 @@
 
 const baseURl = `http://localhost:3000`;
 
+
+// getting all users data
 export const getUserData = async () => {
 
     try {
@@ -16,7 +18,7 @@ export const getUserData = async () => {
 }
 
 
-
+// Adding Category
 export const add_Category = async (category) => {
     try {
         const res = await fetch(`${baseURl}/api/admin/category`, {
@@ -37,7 +39,7 @@ export const add_Category = async (category) => {
 }
 
 
-
+// getting all categories data
 export const getCategoriesData = async () => {
     try {
         const res = await fetch(`${baseURl}/api/admin/category`, {
@@ -50,7 +52,7 @@ export const getCategoriesData = async () => {
     }
 }
 
-
+// deleting  Category
 export const deleteCategory = async (id) => {
     try {
         const res = await fetch(`${baseURl}/api/admin/category?id=${id}`, {
@@ -64,7 +66,7 @@ export const deleteCategory = async (id) => {
     }
 }
 
-
+// getting Category by id
 export const getCategoryById = async (id) => {
    try
    {
@@ -80,7 +82,7 @@ export const getCategoryById = async (id) => {
    }
 }
 
-
+// updating Category
 export const update_Category = async (category) => {
     console.log(' i got call')
     try{
@@ -102,7 +104,7 @@ export const update_Category = async (category) => {
 
 // ---------------------------------------------- Products---------------------------------------------------------------------------------
 
-
+// adding Product
 export const add_products = async ( product ) => 
 {
     try
@@ -121,5 +123,19 @@ export const add_products = async ( product ) =>
     catch(error)
     {
         console.log('error in saving product (services) => ' +  error )
+    }
+}
+
+
+// getting all products data
+export const getProductsData = async () => {
+    try {
+        const res = await fetch(`${baseURl}/api/admin/product`, {
+            method: 'GET',
+        })
+        const data = await res.json();
+        return data;
+    } catch (error) {
+        console.log('error in getting products data (services) => ' + error);
     }
 }
