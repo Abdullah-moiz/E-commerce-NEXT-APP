@@ -48,7 +48,7 @@ export default function addProduct({data}) {
                         <select onChange={(e) => setFormData({...formData , category : e.target.value})} name="" id="" className='text-black w-full h-10'>
                             {
                                 data?.map((cat) => {
-                                    return( <option className='h-10' value={cat._id}>{cat.name}</option>)
+                                    return( <option  className='h-10' value={cat._id}>{cat.name}</option>)
                                 })
                             }
                         </select>
@@ -76,16 +76,13 @@ export default function addProduct({data}) {
                         <label for="remember" class="ml-2 text-sm font-medium text-white dark:text-gray-300">Featured Product</label>
                     </div>
                     <div class="mb-6">
-
                         <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
                         <textarea onChange={(e) => setFormData({...formData , description   : e.target.value }) } id="message" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-orange-500 focus:border-orange-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500" placeholder="Leave a comment..."></textarea>
-
                     </div>
                     <div class="mb-6">
                         <label for="password" class="block mb-2 text-sm font-medium text-white dark:text-white">Product Image</label>
                         <FileBase onDone={({ base64 }) => setFormData({ ...formData, image: base64 })} type="text" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500" required placeholder='Slug' />
                     </div>
-
                     <button type="submit" class="text-white bg-orange-600 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-orange-600 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-orange-600 dark:hover:bg-orange-600 dark:focus:ring-orange-600">Submit</button>
                 </form>
 

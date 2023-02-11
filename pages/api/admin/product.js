@@ -40,17 +40,21 @@ const addProduct = async (req, res) => {
 // deleting product
 const deleteProduct = async (req, res) => {
     try {
-
+        const id = req.query.id;
+        console.log(id);
+        const  productDeletionResult = await Product.findByIdAndDelete(id);
+        return res.status(201).json({msg : "Product Deleted Successfully"});
     }
     catch (error) {
-
+        console.log('error in deleting product(server) => ' + error);
+        return res.status(405).json({error : "can't delete product , Retry !"});
     }
 }
 
 // update Product
 const updateProduct = async (req, res) => {
     try {
-
+     
     }
     catch (error) {
 

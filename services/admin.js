@@ -139,3 +139,18 @@ export const getProductsData = async () => {
         console.log('error in getting products data (services) => ' + error);
     }
 }
+
+// delete specific product
+
+export const delete_Product = async (id) => {
+    try {
+        const res = await fetch(`${baseURl}/api/admin/product?id=${id}`, {
+            method: 'DELETE',
+        })
+        const data = await res.json()
+        return data
+    }
+    catch (error) {
+        console.log('error in deleting product Data (services) => ' + error);
+    }
+}

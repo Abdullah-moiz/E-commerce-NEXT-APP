@@ -65,7 +65,7 @@ export default function categories({ data }) {
                                                 Name
                                             </th>
                                             <th scope="col" className="text-sm font-medium text-white px-6 py-4 ">
-                                                Name
+                                                Featured Product
                                             </th>
                                             <th scope="col" className="text-sm font-medium text-white px-6 py-4 ">
                                                 Image
