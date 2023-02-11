@@ -53,11 +53,18 @@ const deleteProduct = async (req, res) => {
 
 // update Product
 const updateProduct = async (req, res) => {
-    try {
-     
+    const data = req.body;
+    const id = data._id;
+    try
+    {
+        await Product.findByIdAndUpdate(id , data)
+        return res.status(200).json({msg : 'Product updated successfully'})
+        
     }
-    catch (error) {
-
+    catch(error)
+    {
+        console.log('error in getting product data by id (server) => ' + error)
+        return res.status(408).json({error : 'cannot update product data'})
     }
 }
 

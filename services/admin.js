@@ -154,3 +154,41 @@ export const delete_Product = async (id) => {
         console.log('error in deleting product Data (services) => ' + error);
     }
 }
+
+
+
+// getting Category by id
+export const getProductByID = async (id) => {
+    try
+    {
+        const res  =  await fetch(`${baseURl}/api/admin/getProductByID?id=${id}` , {
+            method : 'GET'
+        })
+        const data = await res.json();
+        return data ;
+    }
+    catch(error)
+    {
+      console.log('error in getting specific product (services) => ' + error)
+    }
+ }
+ 
+ // updating Category
+ export const update_product = async (product) => {
+     try{
+         const res = await fetch(`${baseURl}/api/admin/product` , {
+             method : 'PUT',
+             headers : {
+                 'Content-Type' : 'application/json'
+             },
+             body : JSON.stringify(product)
+         })
+         const data = await res.json();
+         return data;
+     }
+     catch(error)
+     {
+         console.log('error in updating category (services) => ' + error)
+     }
+ }
+ 

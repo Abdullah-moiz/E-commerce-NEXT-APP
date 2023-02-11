@@ -92,7 +92,7 @@ export default function getProducts({ data }) {
                                                             <Image width={100} height={100} src={product.image} alt="product Image" />
                                                         </td>
                                                         <td>
-                                                            <Link href={`updateproduct/${product._id}`} class="bg-orange-500 mx-2 hover:bg-orange-900 text-white font-bold py-2 px-4 rounded-full">Update</Link>
+                                                            <Link href={`/updateProducts/${product._id}`} class="bg-orange-500 mx-2 hover:bg-orange-900 text-white font-bold py-2 px-4 rounded-full">Update</Link>
                                                             <button onClick={() => handleDelete(product._id)} class="bg-red-500 mx-2 hover:bg-red-900 text-white font-bold py-2 px-4 rounded-full">Delete</button>
                                                         </td>
                                                     </tr>
