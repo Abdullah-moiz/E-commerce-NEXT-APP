@@ -9,8 +9,8 @@ export default function Profile() {
 
     useEffect(() => {
         const data = JSON.parse(localStorage.getItem('user'))
-        setName(data.name)
-        setEmail(data.email)
+        setName(data?.name)
+        setEmail(data?.email)
     }, [])
 
 

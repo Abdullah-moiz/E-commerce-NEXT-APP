@@ -32,7 +32,7 @@ export default function login() {
                     }
                     else
                     {
-                        Router.push('/frontend/home')
+                        Router.push('/frontend/landing')
                     }
                 })
                 .catch((error) => {
