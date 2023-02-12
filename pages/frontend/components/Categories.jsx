@@ -1,20 +1,19 @@
 import React, { useState } from 'react'
-import Image from 'next/image'
+import CatCard from './CatCard'
 
-export default function Categories() {
-    const [hovered   ,  setHovered   ] = useState(false)
-  return (
-    <div className='w-full p-4 flex flex-wrap'>
-        {/* card */}
-            <div className={`${hovered ? "brightness-50" : "brightness-100"} cursor-pointer w-80 h-52 bg-green-600 flex items-center justify-center p-2  rounded-xl relative`} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} >
-                <Image  fill src='/intro.jpg'  cover alt='no Image for Categories rounded-xl'  />
-                {
-                    hovered && (
-                        <h1 className='text-xl font-semibold z-20 text-white brightness-200'>Categories</h1>
-                    )
-                }
+export default function Categories({ category }) {
+    return (
+        <div className='w-full p-4 flex flex-wrap items-center justify-center flex-col'>
+            <h1 className='p-2 mb-6 mt-2 border-x-4 border-orange-600 text-4xl uppercase  font-bold '>top Categories</h1>
+            <div className='w-full h-full flex items-center justify-center'>
+
+            {
+                category?.map((item) => {
+                    return ( <CatCard key={item._id} item={item}  />  )
+                })
+            }
+
             </div>
-        {/* card */}
-    </div>
-  )
+        </div >
+    )
 }
