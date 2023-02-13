@@ -52,6 +52,7 @@ export const getCategoriesData = async () => {
     }
 }
 
+
 // deleting  Category
 export const deleteCategory = async (id) => {
     try {

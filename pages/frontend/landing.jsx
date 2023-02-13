@@ -7,13 +7,16 @@ import Intro from './components/Intro';
 
 export async function getStaticProps() {
     const category = await getCategoriesData() || [];
+
     return {
-        props : {category}
+        props: { category }
     }
+
 }
 
 
 export default function Landing( {category}) {
+
     useEffect(() => {
         console.log(category)
     }, [])
