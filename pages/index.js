@@ -1,8 +1,24 @@
 import Head from 'next/head'
-import Landing from './frontend/Landing' 
+import Landing from './frontend/Landing'
+import { getCategoriesData  , getProductsData } from '@/services/admin';
 
 
-export default function Home() {
+
+export async function getStaticProps() {
+
+  const category = await getCategoriesData() || [];
+  const totalProduct = await getProductsData() || [];
+
+  const product = totalProduct.slice(0, 8)
+
+
+  return {
+    props: { category, product }
+  }
+
+}
+
+export default function Home({category , product}) {
   return (
     <>
       <Head>
@@ -11,7 +27,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Landing/>
+      <Landing category={category} product={product} />
     </>
   )
 }

@@ -9,7 +9,7 @@ export default function Products({product , AddtoCart}) {
 
             {/* card */}
             {
-                product.map((item) => {
+                product?.map((item) => {
                     return (
                         <ProdCard item={item} key={item._id} AddtoCart={AddtoCart}/>
                     )
