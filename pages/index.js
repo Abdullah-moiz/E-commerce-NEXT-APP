@@ -1,24 +1,14 @@
 import Head from 'next/head'
-import Landing from './frontend/Landing'
-import { getCategoriesData  , getProductsData } from '@/services/admin';
+import { useEffect } from 'react';
+import Router from 'next/router';
 
 
 
-export async function getStaticProps() {
 
-  const category = await getCategoriesData() || [];
-  const totalProduct = await getProductsData() || [];
-
-  const product = totalProduct.slice(0, 8)
-
-
-  return {
-    props: { category, product }
-  }
-
-}
-
-export default function Home({category , product}) {
+export default function Home() {
+    useEffect(() => {
+      Router.push('/frontend/landing')
+    },[])
   return (
     <>
       <Head>
@@ -27,7 +17,6 @@ export default function Home({category , product}) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Landing category={category} product={product} />
     </>
   )
 }

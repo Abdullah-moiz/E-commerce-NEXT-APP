@@ -193,3 +193,19 @@ export const getProductByID = async (id) => {
      }
  }
  
+// --------------------------------- view product by categories --------------------------------------------------------------------
+
+
+
+export const get_Product_By_Category = async (id) => {
+    try {
+        const res =  await fetch(`${baseURl}/api/frontend/getProductByCategory?id=${id}` , {
+            method : "GET",
+        });
+        const data = await  res.json();
+        return data ;
+    } catch (error) {
+        console.log('error at getting product by category (services) => ' + error)
+    }
+   
+}

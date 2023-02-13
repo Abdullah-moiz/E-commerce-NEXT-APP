@@ -7,7 +7,7 @@ import "react-tooltip/dist/react-tooltip.css";
 import Cookies from 'js-cookie'
 import { Tooltip as ReactTooltip } from "react-tooltip";
 
-export default function Navbar() {
+export default function Navbar({pos}) {
     const token = Cookies.get('token');
     const [curUser, setCurUser] = useState(false);
     const [scrolled , isScrolled]  = useState(false);
@@ -48,13 +48,13 @@ export default function Navbar() {
 
 
     return (
-        <div className={` ${scrolled ? "bg-slate-900" : "bg-transparent"} z-50  w-full h-24  text-white flex justify-around fixed top-0 left-0`}>
+        <div className={` ${scrolled ? "bg-slate-900" : "bg-transparent"} z-50  w-full h-24  text-white flex justify-around ${pos} top-0 left-0`}>
             <div className=' h-full  flex items-center justify-start px-4'>
                 <Image width={150} height={150} alt="Logo" src={'/logo.png'} className=" mx-4" />
             </div>
             <div className=' h-full flex item-center  justify-center px-4'>
                 <ul className='w-full h-full flex items-center justify-center'>
-                    <li className='mx-4 p-2  text-lg cursor-pointer transition-all duration-500 hover:text-orange-600'>Home</li>
+                    <li onClick={() => Router.push('/frontend/landing')} className='mx-4 p-2  text-lg cursor-pointer transition-all duration-500 hover:text-orange-600'>Home</li>
                     <li className='mx-4 p-2  text-lg cursor-pointer transition-all duration-500 hover:text-orange-600'>About</li>
                     <li className='mx-4 p-2  text-lg cursor-pointer transition-all duration-500 hover:text-orange-600'>Contact</li>
                     <li className='mx-4 p-2  text-lg cursor-pointer transition-all duration-500 hover:text-orange-600'>Products</li>

@@ -7,7 +7,6 @@ export default async (req , res) =>
     await connectDB();
 
     const {id} = req.query;
-
     try
     {
         const data = await Category.findById({_id : id});
@@ -15,7 +14,7 @@ export default async (req , res) =>
     }
     catch(error)
     {
-        console.log('error in getting category data by id (server) => ')
+        console.log('error in getting category data by id (server) => ' + server)
         return res.status(408).json({error : 'cannot get category data'})
     }
     

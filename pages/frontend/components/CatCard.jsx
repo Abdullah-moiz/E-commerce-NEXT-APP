@@ -1,9 +1,11 @@
 import React  ,{useState} from 'react'
+import Link from 'next/link'
 
 export default function CatCard({item}) {
+    
     const [hovered, setHovered] = useState(false)
     return (
-        <div className={`shadow-xl gap-4 mx-6 my-3 w-96 h-52 bg-green-600 flex items-center justify-center  rounded-2xl relative  transition-all hover:scale-110  duration-700 cursor-pointer`} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} >
+        <Link href={`viewProductByCategories/${item._id}`}  className={`shadow-xl gap-4 mx-6 my-3 w-96 h-52 bg-green-600 flex items-center justify-center  rounded-2xl relative  transition-all hover:scale-110  duration-700 cursor-pointer`} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} >
             <img src={item.image} alt="no Image" className='object-fill w-full h-full rounded-2xl' />
             {
                 hovered && (
@@ -12,6 +14,6 @@ export default function CatCard({item}) {
                     </div>
                 )
             }
-        </div>
+        </Link>
     )
 }
