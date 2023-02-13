@@ -32,7 +32,7 @@ export async function getStaticPaths() {
 }
 
 
-export default function updateProduct({ product_data }) {
+export default function updateProducts({ product_data }) {
 
     const [cateData, setCateData] = useState(product_data);
     const [imageData, setImageData] = useState(cateData.image || null);
