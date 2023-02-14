@@ -205,7 +205,7 @@ export const get_Product_By_Category = async (id) => {
 
 export const add_to_cart = async (product) => {
     try {
-        const res = await fetch(`${baseURl}/api/frontend/addToCart`, {
+        const res = await fetch(`${baseURl}/api/frontend/cart`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -224,7 +224,7 @@ export const add_to_cart = async (product) => {
 
 export const get_cart_data = async (id) => {
     try {
-        const res = await fetch(`${baseURl}/api/frontend/addToCart?id=${id}`, {
+        const res = await fetch(`${baseURl}/api/frontend/cart?id=${id}`, {
             method: 'GET',
         })
         const data = await res.json();
@@ -239,7 +239,7 @@ export const get_cart_data = async (id) => {
 
 export const delete_cart_data = async (data) => {
     try {
-        const res = await fetch(`${baseURl}/api/frontend/addToCart`, {
+        const res = await fetch(`${baseURl}/api/frontend/cart`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'

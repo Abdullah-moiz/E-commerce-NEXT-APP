@@ -25,7 +25,7 @@ export default async (req, res) => {
 const add_to_cart = async (req, res) => {
     const data = req.body;
     const { productID, user } = data;
-    console.log(productID, user);
+
     try {
 
         const checkProd = await cart.findOne({ $and: [{ productID }, { user }] });
@@ -60,6 +60,7 @@ const delete_cart_data = async (req, res) => {
 
     const data = req.body;
     const { productID, user } = data;
+
 
     try {
 

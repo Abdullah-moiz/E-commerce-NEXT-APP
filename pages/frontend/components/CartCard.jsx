@@ -5,14 +5,17 @@ import { delete_cart_data } from '@/services/admin'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export default function CartCard({item , userID}) {
+
+export default function CartCard({item , userID , reupdate}) {
+
 
     const delete_cart = async () => {
-        const data = { user :  userID ,productID : item._id };
+        const data = { user :  userID ,productID : item.productID };
         const res = await delete_cart_data(data);
         if(res.msg)
         {
             toast.success(res.msg);
+            reupdate();
         }
         else
         {
