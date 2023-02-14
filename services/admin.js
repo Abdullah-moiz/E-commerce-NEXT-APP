@@ -69,36 +69,33 @@ export const deleteCategory = async (id) => {
 
 // getting Category by id
 export const getCategoryById = async (id) => {
-   try
-   {
-        const res  =  await fetch(`${baseURl}/api/admin/getCategoryById?id=${id}` , {
-            method : 'GET'
+    try {
+        const res = await fetch(`${baseURl}/api/admin/getCategoryById?id=${id}`, {
+            method: 'GET'
         })
         const data = await res.json();
-        return data ;
-   }
-   catch(error)
-   {
-     console.log('error in getting specific category (services) => ' + error)
-   }
+        return data;
+    }
+    catch (error) {
+        console.log('error in getting specific category (services) => ' + error)
+    }
 }
 
 // updating Category
 export const update_Category = async (category) => {
     console.log(' i got call')
-    try{
-        const res = await fetch(`${baseURl}/api/admin/category` , {
-            method : 'PUT',
-            headers : {
-                'Content-Type' : 'application/json'
+    try {
+        const res = await fetch(`${baseURl}/api/admin/category`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
             },
-            body : JSON.stringify(category)
+            body: JSON.stringify(category)
         })
         const data = await res.json();
         return data;
     }
-    catch(error)
-    {
+    catch (error) {
         console.log('error in updating category (services) => ' + error)
     }
 }
@@ -106,24 +103,21 @@ export const update_Category = async (category) => {
 // ---------------------------------------------- Products---------------------------------------------------------------------------------
 
 // adding Product
-export const add_products = async ( product ) => 
-{
-    try
-    {
-        const res =  await fetch(`${baseURl}/api/admin/product` , {
-            method : 'POST',
-            headers : 
+export const add_products = async (product) => {
+    try {
+        const res = await fetch(`${baseURl}/api/admin/product`, {
+            method: 'POST',
+            headers:
             {
-                'Content-Type' : 'application/json',
+                'Content-Type': 'application/json',
             },
-            body : JSON.stringify(product)
+            body: JSON.stringify(product)
         })
-        const data =  await res.json();
+        const data = await res.json();
         return data;
     }
-    catch(error)
-    {
-        console.log('error in saving product (services) => ' +  error )
+    catch (error) {
+        console.log('error in saving product (services) => ' + error)
     }
 }
 
@@ -160,52 +154,101 @@ export const delete_Product = async (id) => {
 
 // getting Category by id
 export const getProductByID = async (id) => {
-    try
-    {
-        const res  =  await fetch(`${baseURl}/api/admin/getProductByID?id=${id}` , {
-            method : 'GET'
+    try {
+        const res = await fetch(`${baseURl}/api/admin/getProductByID?id=${id}`, {
+            method: 'GET'
         })
         const data = await res.json();
-        return data ;
+        return data;
     }
-    catch(error)
-    {
-      console.log('error in getting specific product (services) => ' + error)
+    catch (error) {
+        console.log('error in getting specific product (services) => ' + error)
     }
- }
- 
- // updating Category
- export const update_product = async (product) => {
-     try{
-         const res = await fetch(`${baseURl}/api/admin/product` , {
-             method : 'PUT',
-             headers : {
-                 'Content-Type' : 'application/json'
-             },
-             body : JSON.stringify(product)
-         })
-         const data = await res.json();
-         return data;
-     }
-     catch(error)
-     {
-         console.log('error in updating category (services) => ' + error)
-     }
- }
- 
+}
+
+// updating Category
+export const update_product = async (product) => {
+    try {
+        const res = await fetch(`${baseURl}/api/admin/product`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(product)
+        })
+        const data = await res.json();
+        return data;
+    }
+    catch (error) {
+        console.log('error in updating category (services) => ' + error)
+    }
+}
+
 // --------------------------------- view product by categories --------------------------------------------------------------------
 
 
 
 export const get_Product_By_Category = async (id) => {
     try {
-        const res =  await fetch(`${baseURl}/api/frontend/getProductByCategory?id=${id}` , {
-            method : "GET",
+        const res = await fetch(`${baseURl}/api/frontend/getProductByCategory?id=${id}`, {
+            method: "GET",
         });
-        const data = await  res.json();
-        return data ;
+        const data = await res.json();
+        return data;
     } catch (error) {
         console.log('error at getting product by category (services) => ' + error)
     }
-   
+
+}
+
+// --------------------------------- Add to cart --------------------------------------------------------------------
+
+export const add_to_cart = async (product) => {
+    try {
+        const res = await fetch(`${baseURl}/api/frontend/addToCart`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(product)
+        })
+        const data = await res.json();
+        return data;
+    } catch (error) {
+        console.log('error at adding product to cart (services) => ' + error)
+    }
+}
+
+
+// --------------------------------- get cart data --------------------------------------------------------------------
+
+export const get_cart_data = async (id) => {
+    try {
+        const res = await fetch(`${baseURl}/api/frontend/addToCart?id=${id}`, {
+            method: 'GET',
+        })
+        const data = await res.json();
+        return data;
+    } catch (error) {
+        console.log('error at getting cart data (services) => ' + error)
+    }
+}
+
+
+// --------------------------------- delete cart data --------------------------------------------------------------------
+
+export const delete_cart_data = async (data) => {
+    try {
+        const res = await fetch(`${baseURl}/api/frontend/addToCart`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        const reply = await res.json();
+        return reply;
+    } catch (error) {
+        console.log('error at deleting cart data (services) => ' + error)
+    }
 }

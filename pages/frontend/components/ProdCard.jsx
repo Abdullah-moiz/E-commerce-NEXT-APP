@@ -1,16 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaCartPlus } from 'react-icons/fa'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Cookies from 'js-cookie';
+import { add_to_cart } from '@/services/admin';
 
 
-export default function ProdCard({ item  }) {
+export default function ProdCard({ item }) {
     const token = Cookies.get('token');
+    const [userID, setUserID] = useState(undefined)
 
-    const AddtoCart = () => {
+    useEffect(() => {
+        if (token) {
+            const getUser = localStorage.getItem('user')
+            const user = JSON.parse(getUser);
+            setUserID(user._id)
+        }
+    }, [])
+
+    const AddtoCart = async () => {
         if (!token) {
-            toast.error('Please login to add product to cart', {
+            toast.error('Please login ', {
                 position: "top-right",
                 autoClose: 2000,
                 hideProgressBar: false,
@@ -21,15 +31,20 @@ export default function ProdCard({ item  }) {
             });
             return;
         }
-        toast.success('Product added to cart', {
-            position: "top-right",
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
+
+        if (userID) {
+            const { _id, name, image, price , quantity } = item;
+            const data = { productID: _id, productName: name, productImage: image, productPrice: price, user: userID , productQuantity: quantity}
+            console.log(data);
+            const res = await add_to_cart(data);
+            if (res.msg) {
+                toast.success(res.msg)
+            }
+            else {
+                toast.error(res.error)
+            }
+        }
+
     }
 
     return (

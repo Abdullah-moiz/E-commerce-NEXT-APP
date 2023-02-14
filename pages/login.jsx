@@ -23,8 +23,8 @@ export default function login() {
                 .then((response) => {
                     Cookies.set('token', response.data.token, { expires: 30 });
                     const userData = response.data.user;
-                    const { email, name  , isAdmin} = userData;
-                    const dataX = { email, name  , isAdmin}
+                    const { email, name  , isAdmin , _id} = userData;
+                    const dataX = { email, name  , isAdmin , _id}
                     localStorage.setItem('user', JSON.stringify(dataX))
                     if(userData.isAdmin === true)
                     {

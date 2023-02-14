@@ -5,16 +5,16 @@ export default async (req, res) => {
     await connectDB();
     switch (req.method) {
         case "POST":
-            addCategory(req , res)
+            await addCategory(req , res)
             break;
         case "GET":
-            getCategory(req , res)
+            await getCategory(req , res)
             break;
         case "PUT":
-            updateCategory(req , res)
+            await updateCategory(req , res)
             break;
         case "DELETE":
-            deleteCategory(req , res)
+            await  deleteCategory(req , res)
             break;
         default:
             return res.status(405).end(`Method ${req.method} Not Allowed`)

@@ -61,7 +61,7 @@ export default function Navbar({pos}) {
                 </ul>
             </div>
             <div className=' h-full  flex items-center  justify-around px-4'>
-                <AiOutlineShoppingCart className='text-2xl  mx-4 hover:text-orange-600 transition-all duration-500 cursor-pointer' />
+                <AiOutlineShoppingCart onClick={()  => Router.push('/frontend/cart')}  className='text-2xl  mx-4 hover:text-orange-600 transition-all duration-500 cursor-pointer' />
                 {
                     curUser ? <BiLogOut id="logout" className='text-2xl  mx-4  hover:text-orange-600 transition-all duration-500 cursor-pointer' onClick={logout} /> : <BiLogIn id="login" className='text-2xl  mx-4  hover:text-orange-600 transition-all duration-500 cursor-pointer' onClick={() => Router.push('/login')}  />
                 }
