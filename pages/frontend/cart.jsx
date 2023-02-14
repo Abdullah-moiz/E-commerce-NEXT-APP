@@ -35,7 +35,7 @@ export default function cart() {
                     cartItem?.length === 0 ? (
                         <div className='w-full h-full  overflow-auto px-4 py-2 flex items-center justify-center flex-col'>
                             <h1 className='text-2xl font-bold mb-4 '>No Items in Cart</h1>
-                            <Link href='/frontend/landing' className='px-4 h-12 bg-orange-600 text-xl font-bold text-white flex items-center justify-center text-center rounded-xl'><BsCartPlusFill className='text-3xl '/> Start Shopping</Link>
+                            <Link href='/frontend/landing' className='w-40 h-12 bg-orange-600 text-xl font-bold text-white flex items-center justify-center text-center rounded-xl'><BsCartPlusFill className='text-xl'/>Start Shopping</Link>
                         </div>
                     ) : (
                         <div className='w-full h-full  overflow-auto px-4 py-2'>
