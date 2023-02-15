@@ -6,7 +6,7 @@ import { get_cart_data } from '@/services/admin'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Link from 'next/link'
-import {BsCartPlusFill} from 'react-icons/bs'
+import { BsCartPlusFill } from 'react-icons/bs'
 
 
 export default function cart() {
@@ -25,6 +25,16 @@ export default function cart() {
         getLatestCartData();
     }, [])
 
+    let totalPrice = 0;
+    for (let i = 0; i < cartItem.length; i++) {
+        const item = cartItem[i];
+        
+        const itemPrice = parseInt(item.productPrice) * parseInt(item.productQuantity);
+        totalPrice += itemPrice;
+    }
+
+    console.log(totalPrice)
+
 
     return (
         <div className='w-full h-screen bg-slate-900'>
@@ -35,7 +45,7 @@ export default function cart() {
                     cartItem?.length === 0 ? (
                         <div className='w-full h-full  overflow-auto px-4 py-2 flex items-center justify-center flex-col'>
                             <h1 className='text-2xl font-bold mb-4 '>No Items in Cart</h1>
-                            <Link href='/frontend/landing' className='w-40 h-12 bg-orange-600 text-xl font-bold text-white flex items-center justify-center text-center rounded-xl'><BsCartPlusFill className='text-xl'/>Start Shopping</Link>
+                            <Link href='/frontend/landing' className='w-40 h-12 bg-orange-600 text-xl font-bold text-white flex items-center justify-center text-center rounded-xl'><BsCartPlusFill className='text-xl' />Start Shopping</Link>
                         </div>
                     ) : (
                         <div className='w-full h-full  overflow-auto px-4 py-2'>
@@ -53,7 +63,7 @@ export default function cart() {
 
                 <div className='w-full p-2 flex items-end flex-col justify-center'>
                     <h1 className='uppercase text-2xl font-bold py-3 border-b-2 border-gray-900 '>Total Price</h1>
-                    <p className='text-2xl font-semibold p-2'>$10000</p>
+                    <p className='text-2xl font-semibold p-2'>$ {totalPrice}</p>
                 </div>
             </div>
             <Footer />

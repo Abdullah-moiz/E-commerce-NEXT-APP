@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import { AiOutlineDelete } from 'react-icons/ai'
-import { delete_cart_data } from '@/services/admin'
+import { delete_cart_data, update_cart_data } from '@/services/admin'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -25,12 +25,36 @@ export default function CartCard({ item, userID, reupdate }) {
         }
     }
 
+
+    const updateQuantity = async () => {
+        const data = { user: userID, productID: item.productID, quantity: Curquantity };
+        const res = await update_cart_data(data);
+        if (res.msg) {
+            reupdate();
+        }
+        else {
+            toast.error(res.error);
+        }
+    }
+
     const handleAdd = () => {
-        
+        if (!Curquantity < 1) {
+            setCurQuantity(Curquantity + 1)
+        }
+        else {
+            setCurQuantity(1)
+        }
+        updateQuantity();
     }
 
     const handleSubtract = () => {
-        
+        if (Curquantity > 1) {
+            setCurQuantity(Curquantity - 1);
+        }
+        else {
+            setCurQuantity(1)
+        }
+        updateQuantity();
     }
 
 

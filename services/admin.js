@@ -252,3 +252,22 @@ export const delete_cart_data = async (data) => {
         console.log('error at deleting cart data (services) => ' + error)
     }
 }
+
+
+// --------------------------------- update cart data --------------------------------------------------------------------
+export const update_cart_data = async (data) => {
+    try {
+        const res = await fetch(`${baseURl}/api/frontend/cart`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type' : 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+        const reply = await res.json(); 
+        return reply;
+    } catch (error) {
+        console.log('error at updating cart data (services) => ' + error)
+    }
+
+}

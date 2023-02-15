@@ -11,7 +11,7 @@ export default async (req, res) => {
             await get_cart_data(req, res)
             break;
         case "PUT":
-
+            await update_cart_data(req, res)
             break;
         case "DELETE":
             await delete_cart_data(req, res)
@@ -74,4 +74,23 @@ const delete_cart_data = async (req, res) => {
 
     }
 
+}
+
+
+const update_cart_data = async (req, res) => {
+    
+        const data = req.body;
+        const { productID, user, quantity } = data;
+    
+        try {
+    
+            await cart.updateOne({ $and: [{ productID }, { user }] }, {productQuantity : quantity });
+            return res.status(200).json({ msg: "Product updated in cart " })
+    
+        } catch (error) {
+    
+            console.log('error in updating product in cart (server) => ' + error)
+            return res.status(401).json({ error: "Something went wrong" })
+    
+        }
 }
