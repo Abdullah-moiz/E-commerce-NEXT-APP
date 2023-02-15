@@ -25,6 +25,8 @@ export default function cart() {
         getLatestCartData();
     }, [])
 
+
+    // calculating Price 
     let totalPrice = 0;
     for (let i = 0; i < cartItem.length; i++) {
         const item = cartItem[i];
@@ -33,7 +35,6 @@ export default function cart() {
         totalPrice += itemPrice;
     }
 
-    console.log(totalPrice)
 
 
     return (
