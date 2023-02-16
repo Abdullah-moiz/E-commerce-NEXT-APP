@@ -12,29 +12,29 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ![image](https://user-images.githubusercontent.com/90745903/219390994-b41355cf-fa34-44c0-89b3-4e48dbaf0efb.png)
 
-#User List
+# User List
 ![image](https://user-images.githubusercontent.com/90745903/219391048-769c79d1-338f-45d4-a65c-01194b94615a.png)
 
-#Product List
+# Product List
 ![image](https://user-images.githubusercontent.com/90745903/219391135-b4d08bd0-cc49-4556-b31e-528445ca8315.png)
 
-#Categories List
+# Categories List
 ![image](https://user-images.githubusercontent.com/90745903/219391235-bcaff092-7a79-4e73-a6d9-b2d5c7befe8a.png)
 
 
 
 
 
-###Landing Page
+### Landing Page
 
 ![image](https://user-images.githubusercontent.com/90745903/219389594-04074cfb-322c-4364-9ff6-d654d920d01f.png)
 
 ![image](https://user-images.githubusercontent.com/90745903/219389700-4a00d60a-8f96-45c7-af9a-b36c6eaa8068.png)
 
-### unable to add to cart without Login 
+### Unable to add to cart without Login 
 ![image](https://user-images.githubusercontent.com/90745903/219389887-2838fc49-69b4-40b2-9f2f-76e82f3d80a1.png)
 
-#Add to Cart
+# Add to Cart
 ![image](https://user-images.githubusercontent.com/90745903/219390483-6d11edc9-e3aa-408d-9f47-d6771be69718.png)
 
 
