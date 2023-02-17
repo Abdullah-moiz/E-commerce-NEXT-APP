@@ -2,6 +2,8 @@ import React from 'react'
 
 export default function payment() {
   return (
-    <div>payment</div>
+    <div className='w-full h-screen'>
+
+    </div>
   )
 }
