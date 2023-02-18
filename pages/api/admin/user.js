@@ -2,11 +2,12 @@ import mongoose from "mongoose";
 import User from "@/models/User";
 import connectDB from '@/utils/connectDB'
 
+
+
 const getUserData = async (req, res) => {
-    // connetc to database
+
     await connectDB();
 
-    // get all users
 
     try {
         const data = await User.find({ "isAdmin": false });
