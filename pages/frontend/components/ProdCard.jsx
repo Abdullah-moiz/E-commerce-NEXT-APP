@@ -33,9 +33,8 @@ export default function ProdCard({ item }) {
         }
 
         if (userID) {
-            const { _id, name, image, price , quantity } = item;
-            const data = { productID: _id, productName: name, productImage: image, productPrice: price, user: userID , productQuantity: quantity}
-            console.log(data);
+            const { _id, name, image, price } = item;
+            const data = { productID: _id, productName: name, productImage: image, productPrice: price, user: userID , productQuantity: 1}
             const res = await add_to_cart(data);
             if (res.msg) {
                 toast.success(res.msg)
