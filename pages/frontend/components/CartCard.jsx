@@ -14,47 +14,21 @@ export default function CartCard({ item, userID, reupdate }) {
 
 
     const delete_cart = async () => {
-        const data = { user: userID, productID: item.productID };
-        const res = await delete_cart_data(data);
-        if (res.msg) {
-            toast.success(res.msg);
-            reupdate();
-        }
-        else {
-            toast.error(res.error);
-        }
+        
     }
 
 
     const updateQuantity = async () => {
-        const data = { user: userID, productID: item.productID, quantity: Curquantity };
-        const res = await update_cart_data(data);
-        if (res.msg) {
-            reupdate();
-        }
-        else {
-            toast.error(res.error);
-        }
+       
     }
 
     const handleAdd = () => {
-        if (!Curquantity < 1) {
-            setCurQuantity(Curquantity + 1)
-        }
-        else {
-            setCurQuantity(1)
-        }
-        updateQuantity();
+       
+        
     }
 
     const handleSubtract = () => {
-        if (Curquantity > 1) {
-            setCurQuantity(Curquantity - 1);
-        }
-        else {
-            setCurQuantity(1)
-        }
-        updateQuantity();
+       
     }
 
 
